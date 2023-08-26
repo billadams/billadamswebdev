@@ -1,0 +1,51 @@
+/* 
+none    none                                    < 640px
+sm      @media (min-width: 640px)               >= 640px
+md      @media screen and (min-width: 768px)    >= 768px
+lg      @media screen and (min-width: 1024px)   >= 1024px
+xl      @media screen and (min-width: 1280px)   >= 1280px
+2xl     @media screen and (min-width: 1536px)   >= 1536px
+*/
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+.page {
+  /* min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  row-gap: 2rem; */
+  margin: 0.75rem;
+}
+
+@media screen and (min-width: 768px) {
+  .page {
+    margin: 0;
+  }
+}
+
+h1 {
+  grid-column: 2 / 3;
+}
+
+.resume {
+  @media screen and (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* column-gap: 2rem; */
+    grid-template-rows: auto auto;
+  }
+}
+
+footer {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid #eeeeee;
+  font-size: 0.75rem;
+  text-align: center;
+}

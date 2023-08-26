@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className='resume'>
+    <main className={styles.resume}>
       <Sidebar classNames={styles.sidebar}>
         <Image
           src={billPic}
@@ -21,17 +21,17 @@ export default function Page() {
         />
         <Contact classNames={styles.contact} />
       </Sidebar>
-      <main className={styles.resumeDetails}>
+      <div className={styles.resumeDetails}>
         <Contact classNames={`${styles.contact} ${styles.section}`} />
-        <div className={`${styles.objective} ${styles.section}`}>
+        <section className={`${styles.objective} ${styles.section}`}>
           <h1>Resume Objective</h1>
           <p>
             Full-stack web developer with ten years of experience developing
             highly scalable enterprise applications.
           </p>
-        </div>
+        </section>
 
-        <div className={`${styles.keySkills} ${styles.section}`}>
+        <section className={`${styles.keySkills} ${styles.section}`}>
           <h2>Key Skills</h2>
           <ul className={styles.skills}>
             <li>.Net MVC/Core</li>
@@ -40,17 +40,16 @@ export default function Page() {
             <li>CSS</li>
             <li>MS SQL</li>
           </ul>
-        </div>
+        </section>
 
-        <div className={`${styles.education} ${styles.section}`}>
+        <section className={`${styles.education} ${styles.section}`}>
           <h2>Education</h2>
           <div>Southeast Community College</div>
           <div>Associate of Applied Science</div>
-        </div>
+        </section>
 
-        <div className={`${styles.experience} ${styles.section}`}>
+        <section className={`${styles.experience} ${styles.section}`}>
           <h2>Experience</h2>
-
           <div className={styles.employmentCard}>
             <div className={styles.employmentDuration}>
               <div className={styles.employer}>
@@ -122,8 +121,8 @@ export default function Page() {
               </li>
             </ul>
           </div>
-        </div>
-      </main>
-    </div>
+        </section>
+      </div>
+    </main>
   );
 }

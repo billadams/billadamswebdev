@@ -8,7 +8,7 @@ type ContactProps = {
 
 export default function Contact(props: ContactProps) {
   return (
-    <div className={props.classNames}>
+    <section className={props.classNames}>
       <address>
         Bill Adams
         <br />
@@ -31,6 +31,6 @@ export default function Contact(props: ContactProps) {
           <FontAwesomeIcon icon={faLinkedin} />
         </a>
       </address>
-    </div>
+    </section>
   );
 }

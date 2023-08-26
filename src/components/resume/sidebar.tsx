@@ -6,5 +6,5 @@ type SidebarProps = {
 };
 
 export default function Sidebar(props: SidebarProps) {
-  return <div className={props.classNames}>{props.children}</div>;
+  return <section className={props.classNames}>{props.children}</section>;
 }

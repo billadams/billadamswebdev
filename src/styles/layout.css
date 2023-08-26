@@ -16,10 +16,6 @@ body {
 }
 
 .page {
-  /* min-height: 100%;
-  display: grid;
-  grid-template-rows: 1fr auto;
-  row-gap: 2rem; */
   margin: 0.75rem;
 }
 
@@ -31,15 +27,6 @@ body {
 
 h1 {
   grid-column: 2 / 3;
-}
-
-.resume {
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    /* column-gap: 2rem; */
-    grid-template-rows: auto auto;
-  }
 }
 
 footer {

@@ -12,13 +12,6 @@ export default function Contact(props: ContactProps) {
       <address>
         Bill Adams
         <br />
-        4045 SW 12th Street
-        <br />
-        Lincoln, NE 68522 <br />
-        Contact Me:
-        <a href='tel:402-817-8151' title='Phone'>
-          <FontAwesomeIcon icon={faPhone} />
-        </a>{' '}
         <a href='mailto:billadams1977@gmail.com' title='Email'>
           <FontAwesomeIcon icon={faEnvelope} className='icon' />
         </a>

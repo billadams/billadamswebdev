@@ -37,6 +37,14 @@ h1 {
   grid-column: 2 / 3;
 }
 
+:where(h1, h2, h3, h4, h5, h6) {
+  color: #3e5671;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
 footer {
   padding-top: 1rem;
   padding-bottom: 1rem;

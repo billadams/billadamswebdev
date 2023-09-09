@@ -1,12 +1,31 @@
+.resumeHeading {
+  padding-bottom: 0.75rem;
+  margin-top: 2rem;
+  border-bottom: 3px solid #3e5671;
+  font-size: 3.25rem;
+  line-height: 0.75;
+  text-transform: uppercase;
+}
+
+.resumeHeading2 {
+  padding-bottom: 0.15rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #3e5671;
+}
+
+.sidebarHeading {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #cccccc;
+  color: #cccccc;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
 .section {
-  /* padding-bottom: 1.25rem;
-    border-bottom: 1px solid #eeeeee; */
   margin-bottom: 1.5rem;
 }
 
 .section:last-of-type {
-  /* padding-bottom: 0;
-    border-bottom: none; */
   margin-bottom: 0;
 }
 
@@ -18,56 +37,62 @@
   display: none;
 }
 
-.contact {
-  text-align: center;
-}
-
 .contact a:link,
 .contact a:visited {
-  color: #ffffff;
+  color: #cccccc;
 }
 
 .employmentDetails,
 .skills {
-  margin-left: 2rem;
+  margin-left: 1rem;
   list-style-type: disc;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.contactMethod:last-of-type {
+  margin-bottom: 0;
+}
+
+.icon {
+  padding: 0.3rem;
+  background-color: #cccccc;
+  border-radius: 1rem;
+  color: #3e5671;
+  font-size: 0.75rem;
+  width: 0.75rem;
 }
 
 .employmentDetails li {
   padding-left: 0.25rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 640px) {
   .resume {
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: auto auto;
+    gap: 2rem;
+    max-width: 60rem;
+    margin: 0 auto;
   }
 
   .sidebar {
     display: block;
     grid-column: 1 / 2;
     grid-row: 1 / -1;
-    padding: 1.25rem;
-    text-align: center;
-    background-color: #366295;
-    margin-right: 0.75rem;
-  }
-
-  .sidebar .contact {
-    font-size: 0.9rem;
-    color: #dddddd;
-  }
-
-  .profileImage {
-    display: initial;
-    border-radius: 150px;
-    margin-bottom: 0.75rem;
+    padding: 2rem 1.25rem;
+    background-color: #3e5671;
+    color: #cccccc;
   }
 
   .resumeDetails {
     grid-column: 2 / 3;
-    padding: 1.25rem;
+    padding-bottom: 2rem;
   }
 
   .resumeDetails .contact {

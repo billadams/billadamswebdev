@@ -29,8 +29,11 @@ export default function Page() {
           <h2 className={`${styles.resumeHeading2} ${styles.sidebarHeading}`}>
             Education
           </h2>
-          <div>Southeast Community College</div>
-          <div>Associate of Applied Science</div>
+          <div className={styles.degree}>
+            Associate of Applied Science,
+            <span className={styles.gradDate}> 12/2017</span>
+          </div>
+          <div>Southeast Community College - Lincoln, NE</div>
         </section>
       </Sidebar>
       <div className={styles.resumeDetails}>
@@ -43,17 +46,19 @@ export default function Page() {
           </p>
         </section>
 
-        <section className={`${styles.experience} ${styles.section}`}>
+        <section className={`${styles.workHistory} ${styles.section}`}>
           <h2 className={styles.resumeHeading2}>Work History</h2>
-          <div className={styles.employmentCard}>
-            <div className={styles.employmentDuration}>
-              <div className={styles.employer}>
-                <span>Sandhills Global,</span> Lincoln, NE
+          <div className={styles.employmentDetails}>
+            <div className={styles.employmentHeading}>
+              <div className={styles.employmentRole}>
+                <span className={styles.role}>Web Developer,</span> 09/2017 -
+                Current
               </div>
-              <div className={styles.duration}>September 2017 - Current</div>
+              <div className={styles.employer}>
+                Sandhills Global, Lincoln, NE
+              </div>
             </div>
-            <div className={styles.role}>Web Developer</div>
-            <ul className={styles.employmentDetails}>
+            <ul className={styles.responsibilities}>
               <li>
                 Improved various core web vitals to decrease site load times.
               </li>
@@ -81,15 +86,17 @@ export default function Page() {
             </ul>
           </div>
 
-          <div className={styles.employmentCard}>
-            <div className={styles.employmentDuration}>
-              <div className={styles.employer}>
-                <span>BA Web Development,</span> Lincoln, NE
+          <div className={styles.employmentDetails}>
+            <div className={styles.employmentHeading}>
+              <div className={styles.employmentRole}>
+                <span className={styles.role}>Freelance Web Developer,</span>{' '}
+                03/2012 - 01/2016
               </div>
-              <div className={styles.duration}>March 2012 - January 2016</div>
+              <div className={styles.employer}>
+                BA Web Development, Lincoln, NE
+              </div>
             </div>
-            <div className={styles.role}>Freelance Web Developer</div>
-            <ul className={styles.employmentDetails}>
+            <ul className={styles.responsibilities}>
               <li>
                 Improved various core web vitals to decrease site load times.
               </li>

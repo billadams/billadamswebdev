@@ -3,6 +3,10 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+:where(h1, h2, h3, h4, h5, h6) {
+  color: #3e5671;
+}
+
 h1 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
@@ -11,4 +15,13 @@ h1 {
 h2 {
   margin-bottom: 0.25rem;
   font-size: 1.25rem;
+}
+
+a:link,
+a:visited {
+  color: #3e5671;
+}
+
+a:hover {
+  text-decoration: none;
 }

@@ -1,5 +1,8 @@
 import Sidebar from '@/components/resume/sidebar';
 import Contact from '@/components/resume/contact';
+import Skills from '@/components/resume/skills';
+import Education from '@/components/resume/education';
+
 import styles from './styles.module.css';
 import { Metadata } from 'next';
 
@@ -12,32 +15,12 @@ export default function Page() {
     <div className={styles.resume}>
       <h1 className={styles.resumeHeading}>Bill Adams</h1>
       <Sidebar classNames={styles.sidebar}>
-        <Contact classNames={styles.contact} />
-        <section className={`${styles.keySkills} ${styles.section}`}>
-          <h2 className={`${styles.resumeHeading2} ${styles.sidebarHeading}`}>
-            Skills
-          </h2>
-          <ul className={styles.skills}>
-            <li>.Net MVC/Core</li>
-            <li>JavaScript and React</li>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>MS SQL</li>
-          </ul>
-        </section>
-        <section className={`${styles.education} ${styles.section}`}>
-          <h2 className={`${styles.resumeHeading2} ${styles.sidebarHeading}`}>
-            Education
-          </h2>
-          <div className={styles.degree}>
-            Associate of Applied Science,
-            <span className={styles.gradDate}> 12/2017</span>
-          </div>
-          <div>Southeast Community College - Lincoln, NE</div>
-        </section>
+        {/* <Contact classNames={styles.contact} /> */}
+        <Skills />
+        <Education />
       </Sidebar>
       <div className={styles.resumeDetails}>
-        <Contact classNames={`${styles.contact} ${styles.section}`} />
+        {/* <Contact classNames={`${styles.contact} ${styles.section}`} /> */}
         <section className={`${styles.objective} ${styles.section}`}>
           <h2 className={styles.resumeHeading2}>Professional Summary</h2>
           <p>
@@ -45,7 +28,8 @@ export default function Page() {
             highly scalable enterprise applications.
           </p>
         </section>
-
+        <Skills />
+        <Education />
         <section className={`${styles.workHistory} ${styles.section}`}>
           <h2 className={styles.resumeHeading2}>Work History</h2>
           <div className={styles.employmentDetails}>

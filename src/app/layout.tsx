@@ -1,4 +1,6 @@
 import React from 'react';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
@@ -14,7 +16,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <main className='page'>{children}</main>
+        <div className='page-wrapper'>
+          <Header />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

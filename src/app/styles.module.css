@@ -1,0 +1,22 @@
+.home {
+  display: grid;
+  align-items: center;
+  height: 100%;
+  /* background-color: #3e5671; */
+}
+
+.home h1 {
+  line-height: 1;
+}
+
+@media screen and (min-width: 400px) {
+  .home {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 640px) {
+  .home h1 {
+    font-size: 3em;
+  }
+}

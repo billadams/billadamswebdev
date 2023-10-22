@@ -1,7 +1,7 @@
 body {
   color: #6e6e6e;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -9,13 +9,13 @@ body {
 }
 
 h1 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
 }
 
 h2 {
-  margin-bottom: 0.25rem;
-  font-size: 1.25rem;
+  margin-bottom: 0.25em;
+  font-size: 1.25em;
 }
 
 a:link,
@@ -25,10 +25,4 @@ a:visited {
 
 a:hover {
   text-decoration: none;
-}
-
-@media (min-width: 640px) {
-  body {
-    font-size: 1rem;
-  }
 }

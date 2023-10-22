@@ -21,7 +21,7 @@ body {
   grid-template-rows: auto 1fr auto;
   height: 100vh;
   max-width: 1440px;
-  margin: 0.75rem;
+  margin: 0.75em 0.75rem;
 }
 
 .home {
@@ -29,6 +29,10 @@ body {
   align-items: center;
   height: 100%;
   /* background-color: #3e5671; */
+
+  & h1 {
+    line-height: 1;
+  }
 }
 
 @media screen and (min-width: 400px) {
@@ -55,7 +59,7 @@ body {
 }
 
 header {
-  padding: 0.5rem 1.25rem;
+  margin-bottom: 1em;
   font-weight: bold;
 
   & a:link,
@@ -68,12 +72,19 @@ footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-top: 1px solid #eeeeee;
-  font-size: 0.75rem;
+  font-size: 0.75em;
   text-align: center;
 }
 
-.home {
-  & h1 {
-    font-size: 3rem;
+@media (min-width: 640px) {
+  header {
+    padding: 0.5rem 1.25rem;
+    margin-bottom: 0;
+  }
+
+  .home {
+    & h1 {
+      font-size: 3em;
+    }
   }
 }

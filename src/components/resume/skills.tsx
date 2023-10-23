@@ -11,6 +11,7 @@ export default function Skills() {
         <li>HTML/CSS</li>
         <li>REST APIs</li>
         <li>React.js</li>
+        <li>Next.js</li>
         <li>jQuery</li>
         <li>SQL</li>
       </ul>

@@ -76,10 +76,6 @@
   margin-bottom: 1em;
 }
 
-/* .employmentHeading {
-  margin-bottom: 0.5em;
-} */
-
 .employer {
   color: #3e5671;
   font-weight: 500;
@@ -95,7 +91,6 @@
 }
 
 .showInfoButton {
-  /* background-color: #cccccc; */
   padding: 10px;
   border: none;
   color: #3e5671;
@@ -106,9 +101,8 @@
   .resume {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: min-content auto;
     gap: 2rem;
-    /* max-width: 60rem; */
     margin: 0 auto;
   }
 
@@ -158,16 +152,9 @@
     margin-bottom: 1.5em;
   }
 
-  /* .employmentHeading {
-    margin-bottom: 0.75em;
-  } */
-
   /* Contact Information /*
   
   /* Skills */
-  .skills {
-    /* line-height: 1.5; */
-  }
 
   /* Education */
   .degree {

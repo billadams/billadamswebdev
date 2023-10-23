@@ -15,16 +15,17 @@ export default function Page() {
     <div className={styles.resume}>
       <h1 className={styles.resumeHeading}>Bill Adams</h1>
       <Sidebar classNames={styles.sidebar}>
-        {/* <Contact classNames={styles.contact} /> */}
         <Skills />
         <Education />
       </Sidebar>
       <div className={styles.resumeDetails}>
         <section className={`${styles.objective} ${styles.section}`}>
-          <h2 className={styles.resumeHeading2}>Professional Summary</h2>
+          <h2 className={styles.resumeHeading2}>Career Objective</h2>
           <p>
             Full-stack web developer with ten years of experience developing
-            highly scalable enterprise applications.
+            highly scalable enterprise applications. I am looking for a senior
+            developer role where I can continue to grow and learn from other
+            experienced team members.
           </p>
         </section>
         <Skills />

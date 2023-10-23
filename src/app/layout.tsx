@@ -7,6 +7,12 @@ config.autoAddCss = false;
 import '@/styles/reset.css';
 import '@/styles/layout.css';
 import '@/styles/typography.css';
+import { Roboto_Flex } from 'next/font/google';
+
+const roboto = Roboto_Flex({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -14,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }): React.JSX.Element {
   return (
-    <html lang='en'>
+    <html lang='en' className={roboto.className}>
       <body>
         <div className='page-wrapper'>
           <Header />

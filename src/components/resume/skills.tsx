@@ -5,11 +5,14 @@ export default function Skills() {
     <section className={`${styles.keySkills} ${styles.section}`}>
       <h2 className={`${styles.resumeHeading2}`}>Skills</h2>
       <ul className={styles.skills}>
-        <li>.Net MVC/Core</li>
-        <li>JavaScript and React</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>MS SQL</li>
+        <li>C#</li>
+        <li>VB.NET</li>
+        <li>JavaScript</li>
+        <li>HTML/CSS</li>
+        <li>REST APIs</li>
+        <li>React.js</li>
+        <li>jQuery</li>
+        <li>SQL</li>
       </ul>
     </section>
   );

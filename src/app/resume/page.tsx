@@ -24,8 +24,8 @@ export default function Page() {
           <p>
             Full-stack web developer with ten years of experience developing
             highly scalable enterprise applications. I am looking for a senior
-            developer role where I can continue to grow and learn from other
-            experienced team members.
+            developer role and look forward to investing in junior and mid-level
+            developers.
           </p>
         </section>
         <Skills />

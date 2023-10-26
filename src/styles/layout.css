@@ -38,12 +38,27 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
   margin-bottom: 1em;
   font-weight: bold;
 
   & a:link,
   & a:visited {
     text-decoration: none;
+  }
+}
+
+.contact-button {
+  padding: 0.5rem;
+  margin-left: auto;
+  background-color: #3e5671;
+  color: #cccccc;
+  border-style: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2d4560;
   }
 }
 

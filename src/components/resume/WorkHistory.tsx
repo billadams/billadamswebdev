@@ -25,21 +25,26 @@ export default function WorkHistory() {
           </div>
         </div>
         <ul className={styles.responsibilities}>
-          <li>Improved various core web vitals to decrease site load times.</li>
-          <li>
-            Work in a fast-paced, iterative environment, with frequently
-            changing requirements, and utilize an agile development process.
-          </li>
-          <li>
-            Lead a team of developers in rewriting intranet pages to administer
-            make/model manager changes.
-          </li>
           <li>
             Championed accessibility improvements across public facing websites
             to increase usability.
           </li>
           <li>
-            Hold weekly meetings to teach best practices and coding standards.
+            Designed solution architecture, application architecture, and
+            development standards.
+          </li>
+          <li>
+            Migrated legacy applications to modern React.js-based architectures.
+          </li>
+          <li>Implemented unit testing requirements.</li>
+          <li>
+            Work in a fast-paced, iterative environment, with frequently
+            changing requirements, and utilize an agile development process.
+          </li>
+          <li>
+            Led the quality of the code development process, including design,
+            performance, observing coding standards, code review, and thorough
+            testing.
           </li>
         </ul>
       </div>

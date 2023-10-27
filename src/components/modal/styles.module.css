@@ -1,0 +1,20 @@
+.contactDialog {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.showDialog {
+  display: block;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  cursor: pointer;
+}

@@ -1,15 +1,21 @@
 .contactDialog {
   top: 50%;
   transform: translateY(-50%);
-}
-
-.showDialog {
-  display: block;
+  width: 40%;
+  border-color: #ced4da;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
 }
 
 .contactForm {
   display: flex;
   flex-direction: column;
+
+  & .closeButton {
+    padding: 0.25rem;
+    background-color: inherit;
+    color: inherit;
+  }
 }
 
 .closeButton {
@@ -17,4 +23,9 @@
   width: fit-content;
   margin-left: auto;
   cursor: pointer;
+}
+
+.contactForm .closeButton:hover {
+  background-color: inherit;
+  color: #9e9e9e;
 }

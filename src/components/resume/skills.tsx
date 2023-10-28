@@ -7,6 +7,7 @@ export default function Skills() {
       <ul className={styles.skills}>
         <li>C#</li>
         <li>VB.NET</li>
+        <li>PHP</li>
         <li>JavaScript</li>
         <li>HTML/CSS</li>
         <li>REST APIs</li>

@@ -36,16 +36,16 @@ header {
   }
 }
 
-.contact-button {
+.primary-button {
   padding: 0.5rem;
-  margin-left: auto;
+  border-radius: 0.25rem;
   background-color: #3e5671;
-  color: #cccccc;
+  color: #ffffff;
   border-style: none;
-  cursor: pointer;
 
   &:hover {
     background-color: #2d4560;
+    cursor: pointer;
   }
 }
 

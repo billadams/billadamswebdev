@@ -1,7 +1,6 @@
 'use client';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faEnvelope, faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import Form from './Form';
 import styles from '../../app/resume/styles.module.css';

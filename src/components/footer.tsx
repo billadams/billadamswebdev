@@ -9,10 +9,20 @@ export default function Footer() {
         Copyright &copy; {getCurrentYear()} BA Web Development
       </div>
       <div className='social'>
-        <a href='https://www.linkedin.com/in/billadamswebdev/' target='_blank'>
+        <a
+          href='https://www.linkedin.com/in/billadamswebdev/'
+          target='_blank'
+          rel='noopener'
+          aria-label='View my LinkedIn profile'
+        >
           <FontAwesomeIcon icon={faLinkedin} className={`icon`} />
         </a>
-        <a href='https://github.com/billadams' target='_blank'>
+        <a
+          href='https://github.com/billadams'
+          target='_blank'
+          rel='noopener'
+          aria-label='View my GitHub profile'
+        >
           <FontAwesomeIcon icon={faGithub} className={`icon`} />
         </a>
       </div>

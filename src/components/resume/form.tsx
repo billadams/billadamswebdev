@@ -15,7 +15,7 @@ export default function Form() {
       </div>
       <div className={styles.inputCol}>
         <label htmlFor='message'>Message</label>
-        <textarea id='message'></textarea>
+        <textarea id='message' rows={5} className='fuck'></textarea>
       </div>
       <button type='button'>Send Email</button>
     </form>

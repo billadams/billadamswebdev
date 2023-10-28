@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from '@/components/footer';
-import Header from '@/components/header';
+import Header from '@/components/header/header';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;

@@ -39,12 +39,7 @@ address {
   font-style: normal;
 }
 
-/* input {
-  border-style: none;
-} */
-
 textarea {
-  /* border: none; */
   resize: vertical;
 }
 

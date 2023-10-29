@@ -11,6 +11,37 @@ import React, {
 import styles from '@/components/modal/styles.module.css';
 import formStyles from '@/components/forms/styles.module.css';
 
+type ContactRequest = {
+  name: {
+    value: string;
+    errors: string[];
+  };
+  email: {
+    value: string;
+    errors: string[];
+  };
+  message: {
+    value: string;
+    errors: string[];
+  };
+  success: boolean;
+};
+
+type FormInputs = {
+  name: {
+    isValid: boolean;
+    errors: string[];
+  };
+  email: {
+    isValid: boolean;
+    errors: string[];
+  };
+  message: {
+    isValid: boolean;
+    errors: string[];
+  };
+};
+
 export default function Modal({
   showModal,
   setShowModal,
@@ -22,7 +53,7 @@ export default function Modal({
 }) {
   useEffect(() => {
     function closeDialog() {
-      setFormValue((prev) => {
+      setFormValues((prev) => {
         return {
           ...prev,
           name: '',
@@ -40,10 +71,25 @@ export default function Modal({
     };
   });
 
-  const [formValue, setFormValue] = useState({
+  const [formValues, setFormValues] = useState({
     name: '',
     email: '',
     message: '',
+  });
+
+  const [formInputs, setFormInputs] = useState<FormInputs>({
+    name: {
+      isValid: false,
+      errors: [],
+    },
+    email: {
+      isValid: false,
+      errors: [],
+    },
+    message: {
+      isValid: false,
+      errors: [],
+    },
   });
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -56,16 +102,122 @@ export default function Modal({
     dialogRef.current?.close();
   }
 
-  function submit(e: FormEvent) {
+  function validateName(contactRequest: ContactRequest): void {
+    const regex = /^[a-zA-Z ,.\-']+$/;
+    const name = contactRequest.name;
+
+    if (name.value.match(regex) === null) {
+      name.errors.push(
+        'Name can only contain alphabetical characters, spaces, commas, periods, and hypen symbols.'
+      );
+    }
+  }
+
+  function validateEmail(contactRequest: ContactRequest): void {
+    const regex = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+    const email = contactRequest.email;
+
+    if (email.value.match(regex) === null) {
+      email.errors.push('Email must be in the format of example@gmail.com');
+    }
+  }
+
+  function validateRequiredFields(contactRequest: ContactRequest): void {
+    if (!contactRequest.name.value) {
+      contactRequest.name.errors.push('Name is required.');
+    }
+
+    if (!contactRequest?.email.value) {
+      contactRequest.email.errors.push('Email is required.');
+    }
+
+    if (!contactRequest?.message.value) {
+      contactRequest.message.errors.push('Message is required.');
+    }
+  }
+
+  function validateInputIsCorrect(contactRequest: ContactRequest): void {
+    validateName(contactRequest);
+    validateEmail(contactRequest);
+  }
+
+  function validateInput(): ContactRequest {
+    const contactRequest: ContactRequest = {
+      name: {
+        value: formValues.name.trim(),
+        errors: [],
+      },
+      email: {
+        value: formValues.email.trim(),
+        errors: [],
+      },
+      message: {
+        value: formValues.message.trim(),
+        errors: [],
+      },
+      success: false,
+    };
+
+    validateRequiredFields(contactRequest);
+    validateInputIsCorrect(contactRequest);
+
+    return contactRequest;
+  }
+
+  function hasInputErrors(contactRequest: ContactRequest): boolean {
+    let hasInputErrors = false;
+
+    if (
+      contactRequest.name.errors.length > 0 ||
+      contactRequest.email.errors.length > 0 ||
+      contactRequest.message.errors.length > 0
+    ) {
+      hasInputErrors = true;
+    }
+
+    if (hasInputErrors === false) {
+      contactRequest.success = true;
+    }
+
+    return hasInputErrors;
+  }
+
+  function submit(e: FormEvent): boolean {
     e.preventDefault();
 
-    console.log('submit was pressed');
+    const contactRequest = validateInput();
+
+    validateRequiredFields(contactRequest);
+
+    if (hasInputErrors(contactRequest)) {
+      setFormInputs((inputs) => {
+        return {
+          ...inputs,
+          name: {
+            isValid: contactRequest.name.errors.length > 0,
+            errors: contactRequest.name.errors,
+          },
+          email: {
+            isValid: contactRequest.email.errors.length > 0,
+            errors: contactRequest.email.errors,
+          },
+          message: {
+            isValid: contactRequest.message.errors.length > 0,
+            errors: contactRequest.message.errors,
+          },
+        };
+      });
+
+      return false;
+    }
+
+    return true;
   }
 
   function handleInputChange(e: FormEvent) {
     const { name, value } = e.currentTarget as HTMLInputElement;
 
-    setFormValue((prev) => {
+    setFormValues((prev) => {
       return {
         ...prev,
         [name]: value,
@@ -109,8 +261,10 @@ export default function Modal({
             name='name'
             className={formStyles.formControl}
             onChange={(e) => handleInputChange(e)}
-            value={formValue.name}
+            value={formValues.name}
+            title='Name can only contain alphabetical characters in adding to spaces commas, periods, and hypen symbols.'
           ></input>
+          <span className='validity'></span>
         </div>
         <div className={formStyles.formGroup}>
           <label htmlFor='email'>Email:</label>
@@ -120,7 +274,7 @@ export default function Modal({
             name='email'
             className={formStyles.formControl}
             onChange={(e) => handleInputChange(e)}
-            value={formValue.email}
+            value={formValues.email}
           ></input>
         </div>
         <div className={formStyles.formGroup}>
@@ -131,7 +285,7 @@ export default function Modal({
             name='message'
             className={formStyles.formControl}
             onChange={(e) => handleInputChange(e)}
-            value={formValue.message}
+            value={formValues.message}
           ></textarea>
         </div>
         <button

@@ -8,6 +8,7 @@ import React, {
   SetStateAction,
   FormEvent,
 } from 'react';
+import Alert from '@/components/alert/Alert';
 import styles from '@/components/modal/styles.module.css';
 import formStyles from '@/components/forms/styles.module.css';
 
@@ -27,7 +28,7 @@ type ContactRequest = {
   success: boolean;
 };
 
-type FormInputs = {
+type FormValidation = {
   name: {
     isValid: boolean;
     errors: string[];
@@ -40,6 +41,7 @@ type FormInputs = {
     isValid: boolean;
     errors: string[];
   };
+  hasErrors: boolean;
 };
 
 export default function Modal({
@@ -77,7 +79,7 @@ export default function Modal({
     message: '',
   });
 
-  const [formInputs, setFormInputs] = useState<FormInputs>({
+  const [formValidation, setFormValidation] = useState<FormValidation>({
     name: {
       isValid: false,
       errors: [],
@@ -90,6 +92,7 @@ export default function Modal({
       isValid: false,
       errors: [],
     },
+    hasErrors: false,
   });
 
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -182,7 +185,7 @@ export default function Modal({
     return hasInputErrors;
   }
 
-  function submit(e: FormEvent): boolean {
+  function submit(e: FormEvent): void {
     e.preventDefault();
 
     const contactRequest = validateInput();
@@ -190,7 +193,7 @@ export default function Modal({
     validateRequiredFields(contactRequest);
 
     if (hasInputErrors(contactRequest)) {
-      setFormInputs((inputs) => {
+      setFormValidation((inputs) => {
         return {
           ...inputs,
           name: {
@@ -205,13 +208,13 @@ export default function Modal({
             isValid: contactRequest.message.errors.length > 0,
             errors: contactRequest.message.errors,
           },
+          hasErrors: true,
         };
       });
-
-      return false;
+    } else {
+      console.log('Form is valid');
+      // TODO Send the request.
     }
-
-    return true;
   }
 
   function handleInputChange(e: FormEvent) {
@@ -253,6 +256,14 @@ export default function Modal({
         >
           X
         </button>
+        {/* Lets check errors onChange instead. That will provide instant feedback on validation. */}
+        {formValidation.hasErrors && (
+          <Alert ownerState={{ severity: 'error' }}>
+            <ul>
+              <li></li>
+            </ul>
+          </Alert>
+        )}
         <div className={formStyles.formGroup}>
           <label htmlFor='name'>Name:</label>
           <input

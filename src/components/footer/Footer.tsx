@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { getCurrentYear } from '../lib/dates';
+import { getCurrentYear } from '../../lib/dates';
 
 export default function Footer() {
   return (

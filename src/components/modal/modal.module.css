@@ -1,7 +1,7 @@
 .contactDialog {
   top: 50%;
   transform: translateY(-50%);
-  width: 40%;
+  width: 60%;
   border-color: #ced4da;
   border-radius: 0.25rem;
   font-size: 0.9rem;
@@ -28,4 +28,10 @@
 .contactForm .closeButton:hover {
   background-color: inherit;
   color: #9e9e9e;
+}
+
+@media (min-width: 768px) {
+  .contactDialog {
+    width: 30%;
+  }
 }

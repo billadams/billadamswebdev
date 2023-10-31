@@ -9,8 +9,8 @@ import React, {
   FormEvent,
 } from 'react';
 import Alert from '@/components/alert/Alert';
-import styles from '@/components/modal/styles.module.css';
-import formStyles from '@/components/forms/styles.module.css';
+import modalStyles from '@/components/modal/modal.module.css';
+import formStyles from '@/components/forms/forms.module.css';
 
 type ContactRequest = {
   name: {
@@ -192,28 +192,28 @@ export default function Modal({
 
     validateRequiredFields(contactRequest);
 
-    if (hasInputErrors(contactRequest)) {
-      setFormValidation((inputs) => {
-        return {
-          ...inputs,
-          name: {
-            isValid: contactRequest.name.errors.length > 0,
-            errors: contactRequest.name.errors,
-          },
-          email: {
-            isValid: contactRequest.email.errors.length > 0,
-            errors: contactRequest.email.errors,
-          },
-          message: {
-            isValid: contactRequest.message.errors.length > 0,
-            errors: contactRequest.message.errors,
-          },
-          hasErrors: true,
-        };
-      });
-    } else {
-      console.log('Form is valid');
+    setFormValidation((inputs) => {
+      return {
+        ...inputs,
+        name: {
+          isValid: contactRequest.name.errors.length === 0,
+          errors: contactRequest.name.errors,
+        },
+        email: {
+          isValid: contactRequest.email.errors.length === 0,
+          errors: contactRequest.email.errors,
+        },
+        message: {
+          isValid: contactRequest.message.errors.length === 0,
+          errors: contactRequest.message.errors,
+        },
+        hasErrors: true,
+      };
+    });
+
+    if (!hasInputErrors(contactRequest)) {
       // TODO Send the request.
+      console.log('Form is valid');
     }
   }
 
@@ -238,34 +238,28 @@ export default function Modal({
   return (
     <dialog
       id='contact-dialog'
-      className={`${styles.contactDialog} ${getClasses()}`}
+      className={`${modalStyles.contactDialog} ${getClasses()}`}
       ref={dialogRef}
     >
       <form
         method='dialog'
-        className={styles.contactForm}
+        className={modalStyles.contactForm}
         onSubmit={(e) => submit(e)}
       >
         <button
           type='button'
           id='close'
-          className={`${styles.closeButton} primary-button`}
+          className={`${modalStyles.closeButton} primary-button`}
           aria-label='close'
           onClick={() => closeDialog()}
           formNoValidate
         >
           X
         </button>
-        {/* Lets check errors onChange instead. That will provide instant feedback on validation. */}
-        {formValidation.hasErrors && (
-          <Alert ownerState={{ severity: 'error' }}>
-            <ul>
-              <li></li>
-            </ul>
-          </Alert>
-        )}
         <div className={formStyles.formGroup}>
-          <label htmlFor='name'>Name:</label>
+          <label htmlFor='name' className={formStyles.required}>
+            Name:
+          </label>
           <input
             type='text'
             id='name'
@@ -275,10 +269,16 @@ export default function Modal({
             value={formValues.name}
             title='Name can only contain alphabetical characters in adding to spaces commas, periods, and hypen symbols.'
           ></input>
-          <span className='validity'></span>
+          {!formValidation.name.isValid && (
+            <span className={formStyles.inputError}>
+              {formValidation.name.errors[0]}
+            </span>
+          )}
         </div>
         <div className={formStyles.formGroup}>
-          <label htmlFor='email'>Email:</label>
+          <label htmlFor='email' className={formStyles.required}>
+            Email:
+          </label>
           <input
             type='text'
             id='email'
@@ -287,9 +287,16 @@ export default function Modal({
             onChange={(e) => handleInputChange(e)}
             value={formValues.email}
           ></input>
+          {!formValidation.email.isValid && (
+            <span className={formStyles.inputError}>
+              {formValidation.email.errors[0]}
+            </span>
+          )}
         </div>
         <div className={formStyles.formGroup}>
-          <label htmlFor='message'>Message:</label>
+          <label htmlFor='message' className={formStyles.required}>
+            Message:
+          </label>
           <textarea
             id='message'
             rows={5}
@@ -298,10 +305,15 @@ export default function Modal({
             onChange={(e) => handleInputChange(e)}
             value={formValues.message}
           ></textarea>
+          {!formValidation.message.isValid && (
+            <span className={formStyles.inputError}>
+              {formValidation.message.errors[0]}
+            </span>
+          )}
         </div>
         <button
           type='submit'
-          className={`${styles.contactButton} primary-button`}
+          className={`${modalStyles.contactButton} primary-button`}
         >
           Send
         </button>

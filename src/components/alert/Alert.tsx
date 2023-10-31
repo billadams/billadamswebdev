@@ -1,4 +1,4 @@
-import styles from './styles.module.css';
+import styles from './alert.module.css';
 
 type OwnerState = {
   classes?: string;

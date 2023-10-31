@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Modal from '@/components/modal/Modal';
-import styles from '@/components/header/styles.module.css';
+import styles from '@/components/header/header.module.css';
 
 export default function Header() {
   const [showModal, setShowModal] = useState<boolean>(false);

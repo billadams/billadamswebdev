@@ -1,0 +1,184 @@
+.resumeHeading {
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #3e5671;
+  margin-bottom: 1em;
+  line-height: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.resumeHeading2 {
+  padding-bottom: 0.15rem;
+  margin-bottom: 0.5em;
+  border-bottom: 2px solid #3e5671;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.sidebar .resumeHeading2 {
+  margin-bottom: 1em;
+  border-bottom: 2px solid #cccccc;
+  color: #cccccc;
+}
+
+.section {
+  margin-bottom: 1em;
+}
+
+.section:last-of-type {
+  margin-bottom: 0;
+}
+
+.sidebar {
+  display: none;
+}
+
+.profileImage {
+  display: none;
+}
+
+.contact a:link,
+.contact a:visited {
+  color: #cccccc;
+}
+
+.employmentRole {
+  color: inherit;
+  font-size: 1.15em;
+  font-weight: 400;
+}
+
+.responsibilities {
+  margin-left: 2rem;
+  list-style-type: disc;
+}
+
+.contactMethod {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.contactMethod:last-of-type {
+  margin-bottom: 0;
+}
+
+.icon {
+  padding: 0.3rem;
+  background-color: #cccccc;
+  border-radius: 1rem;
+  color: #3e5671;
+  font-size: 0.75rem;
+  width: 0.75rem;
+}
+
+.employmentDetails {
+  margin-bottom: 1em;
+}
+
+.employer {
+  color: #3e5671;
+  font-weight: 500;
+}
+
+.durationLocation {
+  display: flex;
+}
+
+.duration,
+.location {
+  flex: 1;
+}
+
+.showInfoButton {
+  padding: 10px;
+  border: none;
+  color: #3e5671;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 640px) {
+  .resume {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: min-content auto;
+    gap: 2rem;
+    margin: 0 auto;
+  }
+
+  .section {
+    margin-bottom: 1.5em;
+  }
+
+  .sidebar {
+    display: block;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+    padding: 2rem 1.25rem;
+    background-color: #3e5671;
+    color: #cccccc;
+  }
+
+  .resumeHeading {
+    margin-bottom: 0;
+    margin-right: 1.25rem;
+    margin-top: 2rem;
+    font-size: 2em;
+  }
+
+  .resumeHeading2 {
+    margin-bottom: 1em;
+  }
+
+  .resumeDetails {
+    grid-column: 2 / 3;
+    padding-bottom: 2rem;
+    padding-right: 1.25rem;
+  }
+
+  .resumeDetails .keySkills,
+  .resumeDetails .education {
+    display: none;
+  }
+
+  .resumeDetails .contact {
+    display: none;
+  }
+
+  /* Professional Summary */
+
+  /* Work History */
+  .employmentDetails {
+    margin-bottom: 1.5em;
+  }
+
+  /* Contact Information /*
+  
+  /* Skills */
+
+  /* Education */
+  .degree {
+    margin-bottom: 0.15em;
+    font-weight: 600;
+  }
+
+  .gradDate {
+    font-weight: normal;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .resumeHeading {
+    font-size: 3.25em;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .resumeHeading {
+    margin-right: 0;
+  }
+
+  .resumeDetails {
+    padding-right: 0;
+  }
+}

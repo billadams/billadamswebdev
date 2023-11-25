@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\billadamswebdev.client",
+    "\\billadamswebdev.client\\src",
+    "\\billadamswebdev.Server",
+    "\\billadamswebdev.Server\\Controllers",
+    "\\billadamswebdev.Server\\Models",
+    "\\billadamswebdev.Server\\Properties"
   ],
-  "SelectedNode": "\\C:\\Users\\billadams\\Code\\billadamswebdev",
   "PreviewInSolutionExplorer": false
 }

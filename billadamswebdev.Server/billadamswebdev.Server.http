@@ -1,0 +1,11 @@
+@billadamswebdev.Server_HostAddress = https://localhost:7028
+
+POST {{billadamswebdev.Server_HostAddress}}/contact/
+Content-Type: application/json
+
+{
+  "name": "Bill Adams",
+  "email": "billadams1977@gmail.com",
+  "message": "This is a test message"
+}
+###

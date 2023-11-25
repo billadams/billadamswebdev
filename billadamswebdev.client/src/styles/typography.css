@@ -1,0 +1,28 @@
+body,
+dialog {
+  color: #6e6e6e;
+  font-size: 1rem;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  color: #3e5671;
+}
+
+h1 {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+}
+
+h2 {
+  margin-bottom: 0.25em;
+  font-size: 1.25em;
+}
+
+a:link,
+a:visited {
+  color: #3e5671;
+}
+
+a:hover {
+  text-decoration: none;
+}

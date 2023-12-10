@@ -22,9 +22,7 @@ export default function Header() {
             >
                 Contact Me
             </button>
-            {showContactForm &&
-                <Contact setShowForm={setShowContactForm} />
-            }
+            <Contact setShowForm={setShowContactForm} showForm={showContactForm} />
         </header>
     );
 }

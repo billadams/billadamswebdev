@@ -3,6 +3,8 @@ import React, {
     FormEvent,
     Dispatch,
     SetStateAction,
+    useRef,
+    useEffect
 } from 'react';
 import Modal from '@/components/modal/Modal';
 import styles from '@/components/forms/forms.module.css';
@@ -40,10 +42,36 @@ type FormValidation = {
 };
 
 export default function Contact({
-    setShowForm
+    setShowForm,
+    showForm
 }: {
     setShowForm: Dispatch<SetStateAction<boolean>>;
+    showForm: boolean;
 }) {
+
+    useEffect(() => {
+        //const formElements = (
+        //    document.getElementById('contact-form') as HTMLFormElement
+        //)?.elements as HTMLCollection;
+
+        const formElements = formRef.current?.elements as HTMLFormControlsCollection;
+
+        if (formElements?.length > 0) {
+            //closeButtonRef.current = formElements.item(0) as HTMLButtonElement;
+            sendButtonRef.current = formElements[formElements.length - 1] as HTMLButtonElement;
+        }
+
+        formRef.current?.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            formRef.current?.removeEventListener('keydown', handleKeyDown);
+        }
+    }, []);
+
+    const formRef = useRef<HTMLFormElement | null>(null);
+    //const firstInputRef = useRef<HTMLButtonElement | null>(null);
+    const sendButtonRef = useRef<HTMLButtonElement | null>(null);
+    const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
     const [formValues, setFormValues] = useState({
         name: '',
@@ -66,6 +94,22 @@ export default function Contact({
         },
         hasErrors: false,
     });
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === closeButtonRef.current) {
+                    e.preventDefault();
+                    sendButtonRef.current?.focus();
+                }
+            } else {
+                if (document.activeElement === sendButtonRef.current) {
+                    e.preventDefault();
+                    closeButtonRef.current?.focus();
+                }
+            }
+        }
+    }
 
     const validateName = (contactRequest: ContactRequest): void => {
         const regex = /^[a-zA-Z ,.\-']+$/;
@@ -224,8 +268,9 @@ export default function Contact({
 
     return (
         <>
-            <Modal onClose={onCloseDialog}>
+            <Modal onClose={onCloseDialog} isOpen={showForm} ref={closeButtonRef}>
                 <form
+                    ref={formRef}
                     method='dialog'
                     className={styles.contactForm}
                     onSubmit={(e) => onSubmit(e)}

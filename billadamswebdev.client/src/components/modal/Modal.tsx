@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import styles from '@/components/modal/modal.module.css';
 
-//type OnCloseFunction = () => void;
 type ModalProps = {
     onClose: () => void;
     isOpen: boolean;
@@ -103,26 +102,5 @@ const Modal = forwardRef<HTMLButtonElement, ModalProps>(function Modal({
         </dialog>
     );
 })
-
-//export function CloseButton({ onClose, forwardRef
-//}: {
-//    onClose: OnCloseFunction;
-//    forwardRef?: React.RefObject<HTMLButtonElement>;
-//}) {
-//    return (
-//        <button
-//            ref={forwardRef}
-//            type='button'
-//            id='close'
-//            className={`${styles.closeButton} primary-button`}
-//            aria-label='close'
-//            onClick={() => onClose()}
-//            formNoValidate
-//            autoFocus
-//        >
-//            X
-//        </button>
-//    )
-//}
 
 export default Modal;

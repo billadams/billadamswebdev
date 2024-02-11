@@ -3,6 +3,8 @@ import React, {
     useEffect,
     forwardRef
 } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import styles from '@/components/modal/modal.module.css';
 
 type ModalProps = {
@@ -95,7 +97,7 @@ const Modal = forwardRef<HTMLButtonElement, ModalProps>(function Modal({
                     formNoValidate
                     autoFocus
                 >
-                    X
+                    <FontAwesomeIcon icon={faWindowClose} />
                 </button>
             </div>
             {children}

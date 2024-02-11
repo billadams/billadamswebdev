@@ -154,8 +154,6 @@ export default function Contact({
 
         const contactRequest = validateInput();
 
-        validateRequiredFields(contactRequest);
-
         setFormValidation((inputs) => {
             return {
                 ...inputs,

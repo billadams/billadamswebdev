@@ -15,22 +15,20 @@
 
     & .modal_closeButton__02d_A {
         padding: 0.25rem;
+        margin-left: auto;
         background-color: inherit;
         color: inherit;
+        cursor: pointer;
     }
 
     & .modal_closeButton__02d_A:hover {
         background-color: inherit;
         color: #9e9e9e;
     }
+
 }
 
 .modal_closeButton__02d_A {
-    padding: 0.25rem;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-left: auto;
-    cursor: pointer;
 }
 
 @media (min-width: 768px) {

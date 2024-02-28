@@ -11,64 +11,40 @@ type ModalProps = {
     onClose: () => void;
     isOpen: boolean;
     children: React.ReactNode;
-    classes?: string;
+    classNames?: string;
 }
 
 const Modal = forwardRef<HTMLButtonElement, ModalProps>(function Modal({
     onClose,
     isOpen,
     children,
-    classes,
+    classNames,
 }, ref) {
 
     useEffect(() => {
         if (dialogRef.current) {
             dialogRef.current.addEventListener('close', closeDialog);
+            dialogRef.current.addEventListener('click', e => {
+                const dialogDimensions = dialogRef.current?.getBoundingClientRect();
+
+                if (dialogDimensions) {
+                    if (e.clientX < dialogDimensions.left || e.clientX > dialogDimensions.right || e.clientY < dialogDimensions.top || e.clientY > dialogDimensions.bottom) {
+                        closeDialog()
+                    }
+                }
+            })
         }
 
         return () => {
             dialogRef.current?.removeEventListener('close', closeDialog);
+            dialogRef.current?.removeEventListener('click', () => { });
         };
     }, [])
 
-    useEffect(() => {
-        const focusableElements = getAllFocusableElements();
-        firstFocusableElementRef.current = focusableElements?.[0] as HTMLElement;
-        lastFocusableElementRef.current = focusableElements?.[focusableElements.length - 1] as HTMLElement;
-
-        dialogRef.current?.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            dialogRef.current?.removeEventListener('keydown', handleKeyDown);
-        }
-    }, [])
-
     const dialogRef = useRef<HTMLDialogElement>(null);
-    const firstFocusableElementRef = useRef<HTMLElement | null>(null);
-    const lastFocusableElementRef = useRef<HTMLElement | null>(null);
 
-    const getAllFocusableElements = (): NodeListOf<HTMLElement> | undefined => {
-        return dialogRef?.current?.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"]):not([disabled]), details:not([disabled]), summary:not(:disabled)');
-    }
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Tab') {
-            if (e.shiftKey) {
-                if (document.activeElement === firstFocusableElementRef.current) {
-                    e.preventDefault();
-                    lastFocusableElementRef.current?.focus();
-                }
-            } else {
-                if (document.activeElement === lastFocusableElementRef.current) {
-                    e.preventDefault();
-                    firstFocusableElementRef.current?.focus();
-                }
-            }
-        }
-    }
-
-    const getClasses = (): string => {
-        return classes ? classes : '';
+    const getClassNames = (): string => {
+        return classNames ? classNames : '';
     }
 
     const closeDialog = (): void => {
@@ -83,7 +59,7 @@ const Modal = forwardRef<HTMLButtonElement, ModalProps>(function Modal({
 
     return (
         <dialog
-            className={`${styles.contactDialog} ${getClasses()}`}
+            className={`${styles.contactDialog} ${getClassNames()}`}
             ref={dialogRef}
         >
             <div className={styles.closeButtonWrapper}>
@@ -93,7 +69,7 @@ const Modal = forwardRef<HTMLButtonElement, ModalProps>(function Modal({
                     id='close'
                     className={`${styles.closeButton} primary-button`}
                     aria-label='close'
-                    onClick={() => onClose()}
+                    onClick={() => closeDialog()}
                     formNoValidate
                     autoFocus
                 >

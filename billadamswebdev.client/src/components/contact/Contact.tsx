@@ -213,86 +213,78 @@ export default function Contact({
     }
 
     const onCloseDialog = () => {
-        setFormValues({
-            name: '',
-            email: '',
-            message: '',
-        });
-
         setShowForm(false);
     }
 
     return (
-        <>
-            <Modal onClose={onCloseDialog} isOpen={showForm}>
-                <form
-                    method='dialog'
-                    className={styles.contactForm}
-                    onSubmit={(e) => onSubmit(e)}
+        <Modal onClose={onCloseDialog} isOpen={showForm}>
+            <form
+                method='dialog'
+                className={styles.contactForm}
+                onSubmit={(e) => onSubmit(e)}
+            >
+                <div className={styles.formGroup}>
+                    <label htmlFor='name' className={styles.required}>
+                        Name:
+                    </label>
+                    <input
+                        type='text'
+                        id='name'
+                        name='name'
+                        className={styles.formControl}
+                        onChange={(e) => handleInputChange(e)}
+                        value={formValues.name}
+                        title='Name can only contain alphabetical characters in additionss to spaces commas, periods, and hypen symbols.'
+                    ></input>
+                    {!formValidation.name.isValid && (
+                        <span className={styles.inputError}>
+                            {formValidation.name.errors[0]}
+                        </span>
+                    )}
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor='email' className={styles.required}>
+                        Email:
+                    </label>
+                    <input
+                        type='text'
+                        id='email'
+                        name='email'
+                        className={styles.formControl}
+                        onChange={(e) => handleInputChange(e)}
+                        value={formValues.email}
+                    ></input>
+                    {!formValidation.email.isValid && (
+                        <span className={styles.inputError}>
+                            {formValidation.email.errors[0]}
+                        </span>
+                    )}
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor='message' className={styles.required}>
+                        Message:
+                    </label>
+                    <textarea
+                        id='message'
+                        rows={5}
+                        name='message'
+                        className={styles.formControl}
+                        onChange={(e) => handleInputChange(e)}
+                        value={formValues.message}
+                    ></textarea>
+                    {!formValidation.message.isValid && (
+                        <span className={styles.inputError}>
+                            {formValidation.message.errors[0]}
+                        </span>
+                    )}
+                </div>
+                <button
+                    type='submit'
+                    className={`primary-button`}
                 >
-                    <div className={styles.formGroup}>
-                        <label htmlFor='name' className={styles.required}>
-                            Name:
-                        </label>
-                        <input
-                            type='text'
-                            id='name'
-                            name='name'
-                            className={styles.formControl}
-                            onChange={(e) => handleInputChange(e)}
-                            value={formValues.name}
-                            title='Name can only contain alphabetical characters in adding to spaces commas, periods, and hypen symbols.'
-                        ></input>
-                        {!formValidation.name.isValid && (
-                            <span className={styles.inputError}>
-                                {formValidation.name.errors[0]}
-                            </span>
-                        )}
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor='email' className={styles.required}>
-                            Email:
-                        </label>
-                        <input
-                            type='text'
-                            id='email'
-                            name='email'
-                            className={styles.formControl}
-                            onChange={(e) => handleInputChange(e)}
-                            value={formValues.email}
-                        ></input>
-                        {!formValidation.email.isValid && (
-                            <span className={styles.inputError}>
-                                {formValidation.email.errors[0]}
-                            </span>
-                        )}
-                    </div>
-                    <div className={styles.formGroup}>
-                        <label htmlFor='message' className={styles.required}>
-                            Message:
-                        </label>
-                        <textarea
-                            id='message'
-                            rows={5}
-                            name='message'
-                            className={styles.formControl}
-                            onChange={(e) => handleInputChange(e)}
-                            value={formValues.message}
-                        ></textarea>
-                        {!formValidation.message.isValid && (
-                            <span className={styles.inputError}>
-                                {formValidation.message.errors[0]}
-                            </span>
-                        )}
-                    </div>
-                    <button
-                        type='submit'
-                        className={`primary-button`}
-                    >
-                        Send
-                    </button>
-                </form>
-            </Modal>
-        </>
+                    Send
+                </button>
+            </form>
+        </Modal>
     )
 }

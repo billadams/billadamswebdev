@@ -27,7 +27,6 @@ namespace billadamswebdev.Server.Controllers
             {
                 Credentials = new NetworkCredential(_smtpSettings.Username, _smtpSettings.Password),
                 EnableSsl = true,
-                UseDefaultCredentials = true
             };
             MailAddress from = new(contact.Email, $"{contact.Name}", System.Text.Encoding.UTF8);
             MailAddress to = new("billadams1977@gmail.com", "Bill Adams");

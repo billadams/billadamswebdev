@@ -361,4 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# App Settings
 /billadamswebdev.Server/appsettings.json
+/billadamswebdev.Server/appsettings.Development.json

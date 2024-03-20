@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST="{\"pages\":{},\"app\":{\"/Users/billadams/Code/react/nextjs/billadamswebdev/src/app/layout\":[\"static/media/83d7d13e2307bc53-s.p.woff2\"]},\"appUsingSizeAdjust\":true,\"pagesUsingSizeAdjust\":false}"

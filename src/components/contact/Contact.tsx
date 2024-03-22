@@ -173,19 +173,18 @@ export default function Contact({
   };
 
   const submitContactRequest = async (contactRequest: ContactRequest) => {
-    const data = {
-      name: contactRequest.name.value,
-      email: contactRequest.email.value,
-      message: contactRequest.message.value,
-    };
+    const formData = new FormData();
+    formData.append('name', contactRequest.name.value);
+    formData.append('email', contactRequest.email.value);
+    formData.append('message', contactRequest.message.value);
 
     try {
-      const response = await fetch('https://localhost:7028/contact', {
+      const response = await fetch('https://www.billadamswebdev.com/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();

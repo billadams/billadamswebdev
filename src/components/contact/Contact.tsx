@@ -184,7 +184,7 @@ export default function Contact({
         body: formData,
       });
 
-      const result = await response.json();
+      const result = await response.text();
       console.log('Success:', result);
     } catch (error) {
       console.error('Error', error);

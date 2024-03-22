@@ -15,14 +15,14 @@ export default function Header() {
   return (
     <header>
       <Link href='/'>BA Web Dev</Link>
-      {/* <button
-                type='button'
-                className={`${styles.contactButton} primary-button`}
-                onClick={() => displayContactModal()}
-            >
-                Contact Me
-            </button> */}
-      {/* <Contact setShowForm={setShowContactForm} showForm={showContactForm} /> */}
+      <button
+        type='button'
+        className={`${styles.contactButton} primary-button`}
+        onClick={() => displayContactModal()}
+      >
+        Contact Me
+      </button>
+      <Contact setShowForm={setShowContactForm} showForm={showContactForm} />
     </header>
   );
 }

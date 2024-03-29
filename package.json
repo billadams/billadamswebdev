@@ -16,12 +16,13 @@
     "lint": "next lint"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240320.1",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "eslint": "^8.54.0",
     "eslint-plugin-react": "^7.33.2",
-    "typescript": "5.1.6"
+    "typescript": "^5.1.6"
   }
 }

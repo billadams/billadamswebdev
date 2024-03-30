@@ -179,10 +179,13 @@ export default function Contact({
     formData.append('message', contactRequest.message.value);
 
     try {
-      const response = await fetch('https://www.billadamswebdev.com/contact', {
-        method: 'POST',
-        body: formData,
-      });
+      const response = await fetch(
+        'http://localhost:8787/api/sendContactEmail',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      );
 
       const result = await response.text();
       console.log('Success:', result);

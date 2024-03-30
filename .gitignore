@@ -33,6 +33,10 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
+# Wrangler
+.wrangler/
+.dev.vars
+
 # Next.js build output
 .next/
 

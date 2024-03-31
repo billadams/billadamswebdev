@@ -14,11 +14,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const composedRequest = composeRequest(formData, env);
   const response = await sendEmail(composedRequest, env);
 
-  if (response.status === 202) {
-    success = true;
-  }
-
-  return new Response(response);
+  return response;
 };
 
 function composeRequest(formData: { [key: string]: string }, env: Env) {
@@ -37,19 +33,14 @@ function composeRequest(formData: { [key: string]: string }, env: Env) {
     content: [
       {
         type: 'text/plain',
-        value: `New message from ${name} (${email}): "${message}"`,
+        value: `New message from ${name} (${email}):\r\n\r\n "${message}"`,
       },
     ],
     personalizations: [
       {
-        from: {
-          email: env.SENDGRID_EMAIL_SENDER,
-          name: 'billadamswebdev.com',
-        },
         to: [
           {
             email: env.SENDGRID_EMAIL_RECIPIENT,
-            name: 'Bill Adams',
           },
         ],
       },
@@ -69,8 +60,9 @@ async function readRequestBody(request: Request) {
 }
 
 async function sendEmail(composedRequest: any, env: Env) {
+  let emailResponse: Response | undefined = undefined;
   try {
-    const email = await fetch('https://api.sendgrid.com/v3/mail/send', {
+    emailResponse = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${env.SENDGRID_API_KEY}`,
@@ -79,8 +71,11 @@ async function sendEmail(composedRequest: any, env: Env) {
       body: JSON.stringify(composedRequest),
     });
 
-    return email;
+    return emailResponse;
   } catch (error) {
-    return { status: 500, statusText: error };
+    return new Response(emailResponse?.body, {
+      status: emailResponse?.status,
+      statusText: emailResponse?.statusText,
+    });
   }
 }

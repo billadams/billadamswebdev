@@ -5,13 +5,13 @@ type OwnerState = {
   severity: string;
 };
 
-const Alert = ({
+export default function Alert({
   children,
   ownerState,
 }: {
   children?: React.ReactNode;
   ownerState: OwnerState;
-}) => {
+}) {
   const severity = ownerState?.severity ? ownerState.severity : 'info';
   const classes = ownerState?.classes ? ownerState.classes : '';
   const alertSeverity = `alert-${severity}`;
@@ -23,22 +23,18 @@ const Alert = ({
       {children}
     </div>
   );
-};
+}
 
-const AlertTitle = ({
+export function AlertTitle({
   children,
   ownerState,
 }: {
   children?: React.ReactNode;
   ownerState: OwnerState;
-}) => {
+}) {
   const classes = ownerState?.classes ? ownerState.classes : '';
 
   return (
     <div className={`${styles['alert-title']} ${classes}`}>{children}</div>
   );
-};
-
-export default Object.assign(Alert, {
-  Title: AlertTitle,
-});
+}

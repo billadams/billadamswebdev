@@ -1,6 +1,12 @@
 import React, { useState, FormEvent, Dispatch, SetStateAction } from 'react';
 import Modal from '@/components/modal/Modal';
+import Alert from '@/components/alert/Alert';
 import styles from '@/components/forms/forms.module.css';
+
+type Alert = {
+  message: string | null;
+  severity: 'success' | 'error' | 'info';
+};
 
 type ContactRequest = {
   name: {
@@ -41,12 +47,15 @@ export default function Contact({
   setShowForm: Dispatch<SetStateAction<boolean>>;
   showForm: boolean;
 }) {
+  const [alert, setAlert] = useState<Alert>({
+    message: null,
+    severity: 'info',
+  });
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
     message: '',
   });
-
   const [formValidation, setFormValidation] = useState<FormValidation>({
     name: {
       isValid: false,
@@ -177,19 +186,37 @@ export default function Contact({
     formData.append('name', contactRequest.name.value);
     formData.append('email', contactRequest.email.value);
     formData.append('message', contactRequest.message.value);
+    const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
     try {
-      const response = await fetch(
-        'http://localhost:8787/api/sendContactEmail',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      );
+      const response = await fetch(`${domain}/api/sendContactEmail`, {
+        method: 'POST',
+        body: formData,
+      });
 
-      const result = await response.text();
-      console.log('Success:', result);
+      if (response.ok === true) {
+        setAlert({
+          message: 'Your message has been sent!',
+          severity: 'success',
+        });
+        setFormValues({
+          name: '',
+          email: '',
+          message: '',
+        });
+      } else {
+        setAlert({
+          message: 'There was a problem sending your message.',
+          severity: 'error',
+        });
+      }
+
+      console.log('Success:', response);
     } catch (error) {
+      setAlert({
+        message: 'There was a problem sending your message.',
+        severity: 'error',
+      });
       console.error('Error', error);
     }
   };
@@ -207,10 +234,19 @@ export default function Contact({
 
   const onCloseDialog = () => {
     setShowForm(false);
+    setAlert({
+      message: null,
+      severity: 'info',
+    });
   };
 
   return (
     <Modal onClose={onCloseDialog} isOpen={showForm}>
+      {alert?.message && (
+        <Alert ownerState={{ severity: alert.severity }}>
+          <p>{alert.message}</p>
+        </Alert>
+      )}
       <form
         method='dialog'
         className={styles.contactForm}

@@ -67,6 +67,9 @@ async function sendEmail(composedRequest: any, env: Env) {
       headers: {
         Authorization: `Bearer ${env.SENDGRID_API_KEY}`,
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': '*',
+        'Access-Control-Allow-Methods': 'POST',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(composedRequest),
     });

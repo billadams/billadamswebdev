@@ -191,6 +191,11 @@ export default function Contact({
     try {
       const response = await fetch(`${domain}/api/sendContactEmail`, {
         method: 'POST',
+        headers: {
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Methods': 'POST',
+          'Access-Control-Allow-Origin': '*',
+        },
         body: formData,
       });
 

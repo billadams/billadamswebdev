@@ -195,6 +195,7 @@ export default function Contact({
           'Access-Control-Allow-Headers': '*',
           'Access-Control-Allow-Methods': 'POST',
           'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': 'true',
         },
         body: formData,
       });

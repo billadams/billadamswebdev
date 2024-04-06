@@ -189,7 +189,7 @@ export default function Contact({
     const domain = process.env.NEXT_PUBLIC_DOMAIN;
 
     try {
-      const response = await fetch(`${domain}/api/sendContactEmail`, {
+      const response = await fetch(`/api/sendContactEmail`, {
         method: 'POST',
         headers: {
           'Access-Control-Allow-Headers': '*',

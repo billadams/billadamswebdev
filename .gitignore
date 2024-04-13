@@ -34,7 +34,6 @@ bld/
 [Ll]ogs/
 
 # Wrangler
-.wrangler/
 .dev.vars
 
 # Next.js build output

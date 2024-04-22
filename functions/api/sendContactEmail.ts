@@ -53,7 +53,7 @@ async function readRequestBody(request: Request) {
 
   let body: { [key: string]: string } = {};
   for (let entry of formData.entries()) {
-    body[entry[0]] = entry[1];
+    body[entry[0]] = entry[1] as string;
   }
 
   return body;

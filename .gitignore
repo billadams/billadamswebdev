@@ -44,7 +44,7 @@ next-env.d.ts
 # Wrangler files
 .wrangler
 .dev.vars
-.wrangler.toml
+wrangler.toml
 
 # User-specific files
 *.rsuser
